@@ -1,4 +1,4 @@
-﻿using bank_website_backend.Entities;
+﻿using bank_website_backend.Repository;
 
 namespace bank_website_backend.Repository
 {
