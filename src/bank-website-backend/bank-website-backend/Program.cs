@@ -9,9 +9,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+var connectionString = builder.Configuration.GetConnectionString("ConnectionString");
 builder.Services.AddDbContext<BankWebsiteDbContext>(
     options => options.
-    UseSqlServer("Server=EMREVIVO;Database=bank-website-DB;Trusted_Connection=True;TrustServerCertificate=True"));
+    UseSqlServer(connectionString));
 
 var app = builder.Build();
 
