@@ -4,6 +4,6 @@ namespace bank_website_backend.Repository
 {
     public interface IUserRepository:IGenericRepository<User>
     {
-
+        public bool IsNameExsist(string name);
     }
 }
