@@ -6,7 +6,7 @@ namespace bank_website_backend.Repository
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         BankWebsiteDbContext dbContext;
-        GenericRepository(BankWebsiteDbContext dbContext) { 
+        public GenericRepository(BankWebsiteDbContext dbContext) { 
             this.dbContext = dbContext;
         }
         public bool AddRecord(T entity)
