@@ -6,7 +6,7 @@ namespace bank_website_backend.Repository
     public class UserRepository:IUserRepository
     {
         BankWebsiteDbContext dbContext;
-        UserRepository(BankWebsiteDbContext dbContext) {
+        public UserRepository(BankWebsiteDbContext dbContext) {
              this.dbContext = dbContext;
         }
 
@@ -15,6 +15,7 @@ namespace bank_website_backend.Repository
             try
             {
                 dbContext.Users.Add(entity);
+                dbContext.SaveChanges();
                 return true;
             }
             catch(Exception e)
@@ -31,6 +32,7 @@ namespace bank_website_backend.Repository
             try
             {
                 dbContext.Users.Remove(entity);
+                dbContext.SaveChanges();
                 return true;
             }
             catch (Exception e)
