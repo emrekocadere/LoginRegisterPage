@@ -7,6 +7,6 @@ namespace bank_website_backend.Services
     {
         public bool IsNameExsist(string name);
         public User MapUserAndUserRequest(RegisterRequest registerRequest);
-        public bool Register(User user);
+        public bool Register(RegisterRequest user);
     }
 }
