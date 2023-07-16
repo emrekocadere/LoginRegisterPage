@@ -14,6 +14,7 @@ namespace bank_website_backend.Repository
             try
             {
                 dbContext.Add(entity);
+                dbContext.SaveChanges();
                 return true;
             }
             catch(Exception e) {
