@@ -25,9 +25,16 @@ namespace bank_website_backend.Services
         {
             return _mapper.Map<User>(registerRequest);
         }
-        public bool Register(User user)
+        public bool Register(RegisterRequest user)
         {
-            return _userRepository.AddRecord(user);
+            if(!IsNameExsist(user.Name))
+            {
+                return _userRepository.AddRecord(new User {Name=user.Name,Password=user.Password});          
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 } 
