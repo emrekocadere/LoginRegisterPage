@@ -12,13 +12,14 @@ namespace bank_website_backend.Repository
 
         public bool IsNameExsist(string name)
         {
-            if (dbContext.Users.FirstOrDefault(u => u.Name == name) != null)
+            if (dbContext.Users.FirstOrDefault(u => u.Name == name) == null)
             {
-                return true;
+                return false;
             }
             else
-                return false;
+                return true;
         }
 
     }
 }
+
