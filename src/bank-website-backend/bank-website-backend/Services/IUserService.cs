@@ -1,5 +1,6 @@
 ﻿using bank_website_backend.Entities;
 using bank_website_backend.Model.Request;
+using Microsoft.AspNetCore.Identity;
 
 namespace bank_website_backend.Services
 {
@@ -7,6 +8,6 @@ namespace bank_website_backend.Services
     {
         public bool IsNameExsist(string name);
         public User MapUserAndUserRequest(RegisterRequest registerRequest);
-        public bool Register(RegisterRequest user);
+        public  Task<IdentityResult> Register(RegisterRequest registerRequest);
     }
 }
