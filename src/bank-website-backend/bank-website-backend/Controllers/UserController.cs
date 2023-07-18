@@ -3,6 +3,7 @@ using bank_website_backend.Model.Request;
 using bank_website_backend.Repository;
 using bank_website_backend.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bank_website_backend.Controllers
@@ -16,12 +17,25 @@ namespace bank_website_backend.Controllers
             _userService = userService;
         }
 
+
         [HttpPost("register")]
-        public IActionResult Register(RegisterRequest request)
+        public async Task<IActionResult> Register(RegisterRequest request)
         {
-            var user=_userService.MapUserAndUserRequest(request);
-            return Ok(_userService.Register(request));
+            var result = await _userService.Register(request);
+
+            if(result.Succeeded)
+            {
+                Console.WriteLine("sd");
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Errors);
+            }
+
         }
+
+
     }
 }
 
