@@ -25,13 +25,20 @@ namespace bank_website_backend.Controllers
 
             if(result.Succeeded)
             {
-                Console.WriteLine("sd");
                 return Ok(result);
             }
             else
             {
                 return BadRequest(result.Errors);
             }
+
+        }
+
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(RegisterRequest request)
+        {
+
 
         }
 
