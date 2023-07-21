@@ -1,9 +1,5 @@
-﻿using bank_website_backend.Entities;
-using bank_website_backend.Model.Request;
-using bank_website_backend.Repository;
+﻿using bank_website_backend.Model.Request;
 using bank_website_backend.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bank_website_backend.Controllers
@@ -36,9 +32,14 @@ namespace bank_website_backend.Controllers
 
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(RegisterRequest request)
+        public async Task<IActionResult> Login(LoginRequest request)
         {
-
+            var result=await _userService.Login(request);
+            if(result.Succeeded)
+            {
+                return Ok("logged in");
+            }
+            else { return BadRequest("errorrrrr"); }
 
         }
 
