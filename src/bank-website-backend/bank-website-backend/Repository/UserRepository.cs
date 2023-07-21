@@ -10,15 +10,15 @@ namespace bank_website_backend.Repository
              this.dbContext = dbContext;
         }
 
-        public bool IsNameExsist(string name)
-        {
-            if (dbContext.Users.FirstOrDefault(u => u.Name == name) == null)
-            {
-                return false;
-            }
-            else
-                return true;
-        }
+        //public bool IsNameExsist(string name)
+        //{
+        //    if (dbContext.Users.FirstOrDefault(u => u.Name == name) == null)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //        return true;
+        //}
 
     }
 }
