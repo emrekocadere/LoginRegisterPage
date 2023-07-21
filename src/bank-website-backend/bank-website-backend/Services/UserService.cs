@@ -3,7 +3,6 @@ using bank_website_backend.Entities;
 using bank_website_backend.Model.Request;
 using bank_website_backend.Repository;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
 namespace bank_website_backend.Services
@@ -31,9 +30,24 @@ namespace bank_website_backend.Services
             },registerRequest.Password);
         }
 
-        public async Task<Microsoft.AspNetCore.Identity.SignInResult> Login(LoginRequest loginRequest)
+        public async Task<TUser> IsUserExist(string userName)
         {
-            return await _signInManager.PasswordSignInAsync(loginRequest.Name, loginRequest.Password,false,true);
+            return await _userManager.FindByNameAsync(userName);
         }
+
+        public async Task<SignInResult> Login(LoginRequest loginRequest)
+        {
+            var user = await IsUserExist(loginRequest.Name);
+            if (user == null)
+            {
+                throw new Exception();/////midlleware
+            }
+            else
+            {
+                return await _signInManager.PasswordSignInAsync(loginRequest.Name, loginRequest.Password, false, true);
+            }
+            // 
+        }
+
     }
 } 
