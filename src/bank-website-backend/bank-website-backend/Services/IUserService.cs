@@ -9,5 +9,6 @@ namespace bank_website_backend.Services
 
         public  Task<IdentityResult> Register(RegisterRequest registerRequest);
         public  Task<SignInResult> Login(LoginRequest loginRequest);
+        public  Task<TUser> IsUserExist(string userName);
     }
 }
